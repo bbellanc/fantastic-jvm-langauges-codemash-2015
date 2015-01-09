@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+    maven { url "http://repo.grails.org/grails/repo" }
+    }
+    dependencies {
+    classpath "org.grails:grails-gradle-plugin:2.0.0-SNAPSHOT"
+    }
+}
+
+repositories {
+    maven { url "http://repo.grails.org/grails/repo" }
+    }
+apply plugin: "grails"
+
+version = "1.0"
+group = "CodeMash"
+
+grails {
+    grailsVersion= "2.2.2"
+}
+
+dependencies{
+    compile "org.grails:grails-plugin-tomcat:$grails.grailsVersion"
+}
+// Task Example 1
+task upper << {
+    String someString = 'mY_nAmE'
+    println "Original: " + someString 
+    println "Upper case: " + someString.toUpperCase()
+}
+
+// Task Example 2
+task helloWorld << {
+    println "hello world!"
+}
+helloWorld.doLast {
+    println "Greetings from the $helloWorld.name task."
+}
+
+// Task Example 3
+task myTask {
+    println project.group
+}
